@@ -2,8 +2,6 @@
 
 # pylint: disable=invalid-name
 
-import numpy as np
-
 import torch
 
 from transformers import BertForMaskedLM, BertTokenizer
