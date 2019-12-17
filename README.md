@@ -4,6 +4,7 @@
 
 ## Prerequisites
 
+- GPUセットアップ済み(GPUがなければ、ソースコード内の `cuda` に関する場所をコメントアウト)
 - `pip install --user torch torchvision transformers scikit-learn pyknp`
 - download `通常版: Japanese_L-12_H-768_A-12_E-30_BPE_transformers.zip (393M; 19/11/15公開)` from [BERT日本語Pretrainedモデル](http://nlp.ist.i.kyoto-u.ac.jp/index.php?BERT%E6%97%A5%E6%9C%AC%E8%AA%9EPretrained%E3%83%A2%E3%83%87%E3%83%AB)
     - and extract to `bert/`

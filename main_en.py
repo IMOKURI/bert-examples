@@ -29,6 +29,10 @@ tokens_tensor = torch.tensor([tokens])
 model = BertForMaskedLM.from_pretrained("bert-base-uncased")
 model.eval()
 
+# GPUがなければ、以下の2行をコメントアウト
+tokens_tensor = tokens_tensor.to('cuda')
+model.to('cuda')
+
 with torch.no_grad():
     outputs = model(tokens_tensor)
     predictions = outputs[0]

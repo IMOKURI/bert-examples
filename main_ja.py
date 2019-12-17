@@ -6,7 +6,7 @@ from pyknp import Juman
 
 import torch
 
-from transformers import BertModel, BertTokenizer
+from transformers import BertForMaskedLM, BertTokenizer
 
 jumanpp = Juman()
 
@@ -27,7 +27,7 @@ tokenized_text[masked_index] = "[MASK]"
 print(tokenized_text)
 # ['[CLS]', '僕', 'は', '友達', 'と', '[MASK]', 'を', 'する', 'こと', 'が', '好きだ', '[SEP]']
 
-model = BertModel.from_pretrained("bert/Japanese_L-12_H-768_A-12_E-30_BPE_transformers")
+model = BertForMaskedLM.from_pretrained("bert/Japanese_L-12_H-768_A-12_E-30_BPE_transformers")
 bert_tokenizer = BertTokenizer(
     "bert/Japanese_L-12_H-768_A-12_E-30_BPE_transformers/vocab.txt",
     do_lower_case=False,
@@ -39,6 +39,10 @@ tokens_tensor = torch.tensor([indexed_tokens])
 
 model.eval()
 
+# GPUがなければ、以下の2行をコメントアウト
+tokens_tensor = tokens_tensor.to('cuda')
+model.to('cuda')
+
 with torch.no_grad():
     outputs = model(tokens_tensor)
     predictions = outputs[0]
@@ -48,4 +52,4 @@ _, predict_indexes = torch.topk(predictions[0, masked_index], k=5)
 predict_tokens = bert_tokenizer.convert_ids_to_tokens(predict_indexes.tolist())
 
 print(predict_tokens)
-# ['##ン', '##イ', '製', '２００１', '戦争']
+# ['話', '仕事', 'キス', 'ゲーム', 'サッカー']
