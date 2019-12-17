@@ -7,9 +7,10 @@
 - `pip install --user torch torchvision transformers scikit-learn pyknp`
 - download `通常版: Japanese_L-12_H-768_A-12_E-30_BPE_transformers.zip (393M; 19/11/15公開)` from [BERT日本語Pretrainedモデル](http://nlp.ist.i.kyoto-u.ac.jp/index.php?BERT%E6%97%A5%E6%9C%AC%E8%AA%9EPretrained%E3%83%A2%E3%83%87%E3%83%AB)
     - and extract to `bert/`
-- install latest boost ([最新版をソースからインストール](https://www.mathkuro.com/?p=230))
+- install latest boost ([最新版をソースからインストール](https://www.mathkuro.com/?p=230)) or `apt install libboost-all-dev`
 - install latest JUMAN++ ([JUMAN++のインストール](https://dev.classmethod.jp/server-side/python/pyknpjumann-tutorial/))
 
 ## Run
 
-`./main.py`
+- `./main_en.py`
+- `./main_ja.py`
